@@ -1,0 +1,7 @@
+# igonre *.pyc files and pycache folders
+*.pyc
+*/__pycache__
+__pycache__
+
+# ignore idx data files
+*-ubyte
