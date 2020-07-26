@@ -7,7 +7,12 @@ cache: pip
 install:
   - pip install -r requirements.txt
   - pushd mnist-tf/app/data 1>/dev/null && sh download_data.sh && popd 1>/dev/null
+env:
+  - CODECOV_TOKEN="cb5fc8f0-ea3d-483f-b954-9609bd219e36"
 script: 
   - coverage erase
   - coverage run -m pytest
   - find . -name '*.py' -exec coverage report -m {} \;
+  - find . -name '*.py' -exec pylint --output-format=text {} \;
+after_success:
+  - codecov
