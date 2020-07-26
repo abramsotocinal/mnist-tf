@@ -6,7 +6,7 @@ python:
 cache: pip
 install:
   - pip install -r requirements.txt
-  - cd data && sh download_data.sh && cd ..
+  - pushd mnist-tf/app/data 1>/dev/null && sh download_data.sh && popd 1>/dev/null
 script: 
   - coverage erase
   - coverage run -m pytest
