@@ -1,5 +1,12 @@
-numpy
-pandas
-tensorflow
-scikit-learn
-flask
+numpy==1.19.0
+pandas==1.0.5
+tensorflow==2.2.0
+scikit-learn==0.23.1
+Flask==1.1.2
+
+# testing
+pytest==5.4.3
+coverage==5.2.1
+
+# PEP 8
+pylint==2.5.3

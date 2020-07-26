@@ -7,7 +7,7 @@ fashion_mnist = keras.datasets.fashion_mnist
 (train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()
 
 
-def train_model():
+def train_model(model_dir):
     # image pixels range from 0-255
     train_images = train_images / 255.0
 
@@ -33,6 +33,6 @@ def train_model():
     print('\nTest accuracy:', test_acc)
 
     # save model
-    model.save('models/MNIST_fashion')
+    model.save(model_dir + 'MNIST_fashion')
 
     return model.summary()

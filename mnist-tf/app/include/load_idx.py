@@ -1,3 +1,4 @@
+import os
 import struct as st
 import numpy as np
 
@@ -5,13 +6,15 @@ data_dir = 'data/'
 class Idx2Np:
   def __init__(self,target='train',data_dir=data_dir):
     self.data_dir = data_dir
-    self.fname = { 'train': self.data_dir+'train-images-idx3-ubyte',
-          'train_label': self.data_dir+'train-labels-idx1-ubyte',
-          'test': self.data_dir+'t10k-images-idx3-ubyte',
-          'test_label': self.data_dir+'t10k-labels-idx1-ubyte'}
+    self.fname = { 'train': 'train-images-idx3-ubyte',
+          'train_label': 'train-labels-idx1-ubyte',
+          'test': 't10k-images-idx3-ubyte',
+          'test_label': 't10k-labels-idx1-ubyte'}
     if target not in self.fname.keys():
+      # print(target)
       raise ValueError('Please specify one of the following targets: {}'.format(self.fname.keys()))
-    self.img, self.lbl = open(self.fname[target], 'rb'), open(self.fname[target+'_label'], 'rb')
+    self.img = open(os.path.join(self.data_dir,self.fname[target]), 'rb')
+    self.lbl = open(os.path.join(self.data_dir,self.fname[target+'_label']), 'rb')
     self.target = target
   def unpack(self):
     for i in (self.target,self.target+'_label'):

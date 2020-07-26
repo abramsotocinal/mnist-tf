@@ -16,7 +16,19 @@ Run the following commands
 
     $ cd data && sh download_data.
 
-Then, to run the service
+Then, to run the service(need to be in project root)
 
-    $ python main.py
+    $ FLASK_APP=mnist-tf flask run
 
+
+
+### Basic Usage
+
+Run a random prediction
+
+    GET /ml/randpredict
+
+#### TODO:
+- add more documentation
+- add more tests
+- containerize app, ready to be a microservice
